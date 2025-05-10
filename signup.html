@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Sign up</title>
+    <link rel="stylesheet" href="./css/style.css"/>
+    <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-compat.js"></script>
+    <script type="module" src="./firebase-config.js"></script>
+</head>
+<body>
+    <div class="auth-container">
+      <h2>Create an Account</h2>
+      <form action="/register" method="POST">
+          <label for="name">Full Name:</label>
+          <input type="text" id="name" name="name" required />
+
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required />
+
+          <label for="password">Password:</label>
+          <input type="password" id="password" name="password" required />
+
+          <button type="submit">Sign up</button>
+          <p>Already have an account? <a href="./Login.html">Log in here</a></p>
+      </form>
+    </div>
+</body>
+</html>

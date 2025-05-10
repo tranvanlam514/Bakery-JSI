@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>About Us - Bakery</title>
+    <link rel="stylesheet" href="./css/style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Poppins", sans-serif;
+            background-color: #fffaf4;
+            color: #3d2a20;
+        }
+        
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #f4e7cb;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        nav a {
+            margin-left: 1rem;
+            text-decoration: none;
+            color: #442c2e;
+            font-weight: 600;
+        }
+
+        nav .btn-login {
+            background: #6b3b2a;
+            color: white;
+            padding: 0.4rem 0.8rem;
+            border-radius: 8px;
+        }
+
+        nav .btn-login:hover {
+            background: #4a281d;
+        }
+        
+        .about-page {
+            padding: 60px 30px;
+            background-color: #fff0eb;
+            min-height: 60vh;
+            text-align: center;
+        }
+
+        .about-content {
+            max-width: 700px;
+            margin: auto;
+        }
+
+        .about-content h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .about-content p {
+            font-size: 18px;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #4b2e2e;
+            color: #fff;
+        }
+
+        .about-modern {
+            background-color: #fffaf4;
+            padding: 80px 20px;
+        }
+
+        .about-container {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            gap: 50px;
+        }
+
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .about-text h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: #3d2a20;
+        }
+
+        .about-text p {
+            font-size: 18px;
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #4b2e2e;
+        }
+
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+            text-align: center;
+        }
+
+        .about-image img {
+            max-width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">Bakery</div>
+        <nav>
+            <a href="./main.html">Home</a>
+            <a href="#">Products</a>
+            <a href="./about.html">About Us</a>
+            <a href="./contact.html">Contact</a>
+            <a href="./Signup.html" class="btn-login">Log in & Sign up </a>
+        </nav>
+    </header>
+
+    <section class="about-modern">
+        <div class="about-container">
+            <div class="about-text">
+                <h1>Our Story</h1>
+                <p>At Bakery, we believe that every sweet treat tells a story. Founded by passionate bakers, we are dedicated to crafting fresh, delicious, and visually stunning cakes and pastries that brighten your day.</p>
+                <p>From our fluffy sponge cakes to handmade cookies, our goal is to bring a little more joy into your life — one bite at a time.</p>
+                <p>We use only the finest ingredients and bake with love, ensuring that every item is not only tasty, but also memorable.</p>
+            </div>
+            <div class="about-image">
+                <img src="https://static2.avayha.com/uploads/2021/05/30125030/Mie_cover.jpg" alt="Our Bakery">
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+    </footer>
+</body>
+</html>
