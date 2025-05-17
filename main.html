@@ -146,7 +146,7 @@
         <div class="logo">Bakery</div>
         <nav>
             <a href="./main.html">Home</a>
-            <a href="#">Products</a>
+            <a href="./products.html">Products</a>
             <a href="./about.html">About Us</a>
             <a href="./contact.html">Contact</a>
             <a href="./Signup.html" class="btn-login">Log in & Sign up </a>
@@ -162,32 +162,5 @@
     
     <footer class="footer">
     </footer>
-    
-    <script>
-        async function fetchOpenFoodData() {
-          const response = await fetch("https://world.openfoodfacts.org/cgi/search.pl?search_terms=cake&search_simple=1&action=process&json=1");
-          const data = await response.json();
-    
-          const list = document.getElementById('openfood-list');
-          data.products.slice(0, 12).forEach(product => {
-            const name = product.product_name || "Unnamed Cake";
-            const image = product.image_front_url || "https://via.placeholder.com/250x250.png?text=No+Image";
-            const price = product.price || "N/A";
-            const brand = product.brands || "Unknown";
-    
-            const item = document.createElement("div");
-            item.className = "product-card";
-            item.innerHTML = `
-              <img src="${image}" alt="${name}">
-              <h3>${name}</h3>
-              <p><strong>Brand:</strong> ${brand}</p>
-              <p><strong>Price:</strong> ${price}</p>
-            `;
-            list.appendChild(item);
-          });
-        }
-    
-        fetchOpenFoodData();
-    </script>
 </body>
 </html>
