@@ -38,54 +38,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 });
-
-
-
-// document.getElementById("button_signup").addEventListener("click", function (event) {
-//   event.preventDefault();
-
-//   const name = document.getElementById("name").value;
-//   const email = document.getElementById("email").value;
-//   const password = document.getElementById("password").value;
-
-//   firebase.auth().createUserWithEmailAndPassword(email, password)
-//     .then((userCredential) => {
-//       const user = userCredential.user;
-//       return user.updateProfile({
-//         displayName: name
-//       });
-//     })
-//     .then(() => {
-//       console.log("User registered and profile updated");
-//       alert("Đăng ký thành công!");
-//       window.location.href = "./login.html"; // Chuyển sang trang đăng nhập
-//     })
-//     .catch((error) => {
-//       const errorMessage = error.message;
-//       alert("Đăng ký thất bại: " + errorMessage);
-//       console.error("Registration error:", error);
-//     });
-// });
-
-// document.getElementById("button_login").addEventListener("click", function (event) {
-//   event.preventDefault();
-
-//   const email = document.getElementById("email").value;
-//   const password = document.getElementById("password").value;
-
-//   firebase.auth().signInWithEmailAndPassword(email, password)
-//     .then((userCredential) => {
-//       const user = userCredential.user;
-//       console.log("User signed in:", user);
-//       alert("Đăng nhập thành công!");
-//       window.location.href = "./index.html";
-//     })
-//     .catch((error) => {
-//       const errorMessage = error.message;
-//       alert("Đăng nhập thất bại: " + errorMessage);
-//       console.error(error);
-//     });
-// });
 document.addEventListener('DOMContentLoaded', function () {
     const loginButton = document.getElementById("button_login");
 
@@ -96,6 +48,9 @@ document.addEventListener('DOMContentLoaded', function () {
             const email = document.getElementById("email").value;
             const password = document.getElementById("password").value;
 
+            if(email == "admin@gmail.com" && password=="admin"){
+              window.location.href = "./admin.html";
+            }
             firebase.auth().signInWithEmailAndPassword(email, password)
                 .then((userCredential) => {
                     const user = userCredential.user;
@@ -109,6 +64,28 @@ document.addEventListener('DOMContentLoaded', function () {
                     console.error(error);
                 });
         });
+    }
+});
+logoutBtn.addEventListener("click", function () {
+    firebase.auth().signOut().then(() => {
+      alert("Đăng xuất thành công!");
+      window.location.reload();
+    }).catch((error) => {
+      console.error("Đăng xuất thất bại: ", error);
+    });
+});
+const loginBtn = document.getElementById("loginBtn");
+const userAvatar = document.getElementById("userAvatar");
+const logoutBtn = document.getElementById("logoutBtn");
+firebase.auth().onAuthStateChanged(user => {
+    if (user) {
+        document.getElementById("loginBtn").style.display = "none"; // Ẩn nút đăng nhập và đăng ký
+        document.getElementById("userAvatar").src = user.photoURL; // Hiển thị avatar
+        document.getElementById("userAavatar").style.display = "block"; // Đảm bảo avatar được hiển thị
+        document.getElementById("logoutBtn").style.display = "block";
+    } else {
+        document.getElementById("loginBtn").style.display = "block";
+        document.getElementById("userAvatar").style.display = "none";
     }
 });
 

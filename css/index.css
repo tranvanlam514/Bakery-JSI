@@ -1,15 +1,15 @@
-* {
+        * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
         body {
-            font-family: 'Quicksand', sans-serif;
-            background: #fffaf1;
-            color: #442c2e;
+            font-family: "Poppins", sans-serif;
+            background-color: #fffaf4;
+            color: #3d2a20;
         }
-
+        
         header {
             display: flex;
             justify-content: space-between;

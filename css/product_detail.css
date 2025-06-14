@@ -1,0 +1,228 @@
+* {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: #f5f5f5;
+        color: #333;
+        line-height: 1.6;
+    }
+
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: #f4e7cb;
+        padding: 1rem 2rem;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .logo {
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
+
+    nav a {
+        margin-left: 1rem;
+        text-decoration: none;
+        color: #442c2e;
+        font-weight: 600;
+    }
+
+    nav .btn-login {
+        background: #6b3b2a;
+        color: white;
+        padding: 0.4rem 0.8rem;
+        border-radius: 8px;
+    }
+
+    nav .btn-login:hover {
+        background: #4a281d;
+    }
+
+    .container {
+      max-width: 960px;
+      margin: 40px auto;
+      padding: 20px;
+    }
+
+    #product-detail {
+      background-color: #ffffff;
+      border-radius: 16px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+      padding: 30px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      align-items: flex-start;
+    }
+
+    #product-detail img {
+      width: 100%;
+      max-width: 400px;
+      border-radius: 16px;
+      object-fit: cover;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+    }
+
+    .detail-info {
+      flex: 1;
+      min-width: 280px;
+    }
+
+    .detail-info h1 {
+      font-size: 32px;
+      margin-bottom: 12px;
+      color: #e67300;
+    }
+
+    .detail-info h4 {
+      margin-top: 8px;
+      font-weight: 600;
+      color: #555;
+    }
+
+    .detail-info p {
+      margin-top: 16px;
+      text-align: justify;
+    }
+
+    @media (max-width: 768px) {
+      #product-detail {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      #product-detail img {
+        max-width: 100%;
+      }
+    }
+    .btn-favorite {
+        margin-top: 1rem;
+        padding: 10px 16px;
+        background-color: #ff5e5e;
+        border: none;
+        color: white;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: bold;
+    }
+
+    .product-detail-card {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      max-width: 1000px;
+      margin: 50px auto;
+      background-color: #ffffff;
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      padding: 30px;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      animation: fadeIn 0.4s ease;
+    }
+
+    .product-detail-card img {
+      flex: 1;
+      max-width: 400px;
+      width: 100%;
+      border-radius: 12px;
+      object-fit: cover;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .product-detail-card-info {
+      flex: 2;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .product-detail-card-info h1 {
+      font-size: 2rem;
+      margin-bottom: 10px;
+      color: #333;
+    }
+
+    .product-detail-card-info h4 {
+      color: #666;
+      margin: 8px 0;
+    }
+
+    .product-detail-card-info p {
+      margin-top: 16px;
+      line-height: 1.6;
+      color: #444;
+      text-align: justify;
+    }
+
+    #add-to-favorites {
+      margin-top: 30px;
+      padding: 12px 24px;
+      background-color: #ff6b6b;
+      color: white;
+      font-size: 1rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      align-self: flex-start;
+    }
+
+    #add-to-favorites:hover {
+      background-color: #e74c3c;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .search-form {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-left: 20px;
+        }
+
+        .search-form input {
+            padding: 6px 12px;
+            border-radius: 20px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+            outline: none;
+        }
+
+        .search-form button {
+            padding: 6px 12px;
+            border-radius: 20px;
+            border: none;
+            background-color: #f4a261;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .search-form button:hover {
+            background-color: #e76f51;
+        }
+
+        .suggestions-box {
+            position: absolute;
+            background-color: white;
+            border: 1px solid #ccc;
+            width: 100%;
+            max-height: 200px;
+            overflow-y: auto;
+            display: none;
+            z-index: 999;
+        }

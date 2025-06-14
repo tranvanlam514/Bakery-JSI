@@ -12,10 +12,14 @@
         <div class="logo">Bakery</div>
         <nav>
             <a href="./index.html">Home</a>
-            <a href="./products.html">Products</a>
+            <a href="./admin.html">Products</a>
             <a href="./about.html">About Us</a>
             <a href="./contact.html">Contact</a>
-            <a href="./signup.html" class="btn-login">Log in & Sign up </a>
+            <a href="./signup.html" class="btn-login" id="loginBtn">Log in & Sign up</a>
+            <div id="userInfo" style="display: none; align-items: center; gap: 10px;">
+                <img id="userAvatar" src="https://i.pinimg.com/736x/c6/e5/65/c6e56503cfdd87da299f72dc416023d4.jpg" alt="avatar" style="width: 30px; height: 30px; border-radius: 50%;" />
+                <button id="logoutBtn">Log out</button>
+            </div>
         </nav>
     </header>
     
@@ -37,73 +41,8 @@
 
     </footer>
 
-    <script>
-        const API_URL = 'https://www.themealdb.com/api/json/v1/1/filter.php?c=Dessert';
-        const productList = document.getElementById('product-list');
-        const localProducts = JSON.parse(localStorage.getItem('localProducts')) || [];
-
-        fetch(API_URL)
-        .then(response => response.json())
-        .then(data => {
-            data.meals.forEach(meal => {
-            const productCard = createProductCard(meal.strMeal, meal.strMealThumb, false, null);
-            productList.appendChild(productCard);
-            });
-
-            localProducts.forEach((item, index) => {
-            const productCard = createProductCard(item.name, item.img, true, index);
-            productList.appendChild(productCard);
-            });
-        })
-        .catch(error => {
-            console.error('Error fetching data:', error);
-        });
-
-        // // Hàm tạo product card
-        // function createProductCard(name, img, isLocal, localIndex) {
-        // const card = document.createElement('div');
-        // card.className = 'product-card';
-        // card.innerHTML = `
-        //     <img src="${img}" alt="${name}">
-        //     <h3>${name}</h3>
-        //     ${isLocal ? `<button onclick="deleteLocalProduct(${localIndex})">Delete</button>` : ''}
-        // `;
-        // return card;
-        // }
-
-        // document.getElementById('addProductForm').addEventListener('submit', e => {
-        // e.preventDefault();
-        // const name = document.getElementById('productName').value.trim();
-        // const img = document.getElementById('productImg').value.trim();
-
-        // if (!name || !img) return alert("Please fill in all fields.");
-
-        // // localProducts.push({ name, img });
-        // // localStorage.setItem('localProducts', JSON.stringify(localProducts));
-        // // location.reload(); 
-        //     // thêm một document vào collection users
-        //     db.collection("cake").add({
-        //         name: name,
-        //         image_url: img,
-        //     })
-        //     .then((docRef) => {
-        //         console.log("Document written with ID: ", docRef.id);
-        //     })
-        //     .catch((error) => {
-        //         console.error("Error adding document: ", error);
-        //     });
-        // });
-
-        // // Xoá sản phẩm local
-        // function deleteLocalProduct(index) {
-        // if (confirm('Are you sure you want to delete this product?')) {
-        //     localProducts.splice(index, 1);
-        //     localStorage.setItem('localProducts', JSON.stringify(localProducts));
-        //     location.reload();
-        // }
-        // }
-        
-    </script>
+    <script type="module" src="./js/admin.js"></script>
+    <script type="module" src="./js/firebase_config.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
 
