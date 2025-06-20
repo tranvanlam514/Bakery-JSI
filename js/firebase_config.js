@@ -8,6 +8,7 @@ const firebaseConfig = {
     measurementId: "G-N94X8S07W3"
 };
 firebase.initializeApp(firebaseConfig);
+const auth = firebase.auth();
 document.addEventListener('DOMContentLoaded', function () {
     const signupButton = document.getElementById("button_signup");
     if (signupButton) {
@@ -49,6 +50,10 @@ document.addEventListener('DOMContentLoaded', function () {
             const password = document.getElementById("password").value;
 
             if(email == "admin@gmail.com" && password=="admin"){
+              const navNew = document.getElementById("navNew");
+              const navAdd = document.getElementById("navAdd");
+              if (navNew) navNew.style.display = "none";
+              if (navAdd) navAdd.style.display = "inline-block";
               window.location.href = "./admin.html";
             }
             firebase.auth().signInWithEmailAndPassword(email, password)
@@ -74,18 +79,34 @@ logoutBtn.addEventListener("click", function () {
       console.error("Đăng xuất thất bại: ", error);
     });
 });
-const loginBtn = document.getElementById("loginBtn");
-const userAvatar = document.getElementById("userAvatar");
-const logoutBtn = document.getElementById("logoutBtn");
-firebase.auth().onAuthStateChanged(user => {
+document.addEventListener("DOMContentLoaded", () => {
+  const loginBtn = document.getElementById("loginBtn");
+  const userMenu = document.getElementById("userMenu");
+  const userAvatar = document.getElementById("userAvatar");
+  const logoutBtn = document.getElementById("logoutBtn");
+
+  firebase.auth().onAuthStateChanged((user) => {
     if (user) {
-        document.getElementById("loginBtn").style.display = "none"; // Ẩn nút đăng nhập và đăng ký
-        document.getElementById("userAvatar").src = user.photoURL; // Hiển thị avatar
-        document.getElementById("userAavatar").style.display = "block"; // Đảm bảo avatar được hiển thị
-        document.getElementById("logoutBtn").style.display = "block";
+      console.log("Đã đăng nhập:", user);
+      if (loginBtn) loginBtn.style.display = "none";
+      if (userMenu) userMenu.style.display = "flex";
+      if (userAvatar) userAvatar.src = user.photoURL || "https://www.gravatar.com/avatar/?d=mp";
+      
+      if (logoutBtn) {
+        logoutBtn.addEventListener("click", () => {
+          firebase.auth().signOut().then(() => {
+            alert("Đăng xuất thành công!");
+            window.location.reload();
+          }).catch((error) => {
+            console.error("Logout error:", error);
+          });
+        });
+      }
     } else {
-        document.getElementById("loginBtn").style.display = "block";
-        document.getElementById("userAvatar").style.display = "none";
+      console.log("Chưa đăng nhập");
+      if (loginBtn) loginBtn.style.display = "inline-block";
+      if (userMenu) userMenu.style.display = "none";
     }
+  });
 });
 

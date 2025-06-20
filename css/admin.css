@@ -141,3 +141,77 @@
         .delete-btn:hover {
             background-color: #cc0000;
         }
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .user-menu {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .user-menu img {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid white;
+            box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
+        }
+
+        .user-menu button {
+            background-color: #8B4513;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .user-menu button:hover {
+            background-color: #A0522D;
+        }
+        #addProductForm {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 40px auto;
+            padding: 20px;
+            width: 320px;
+            background-color: #fff9ed;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        #addProductForm input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            font-size: 16px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+        }
+
+        #addProductForm button {
+            width: 100%;
+            padding: 10px;
+            background-color: #f0803c;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        #addProductForm button:hover {
+            background-color: #e76a24;
+        }
+
+
