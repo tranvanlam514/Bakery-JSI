@@ -49,11 +49,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const email = document.getElementById("email").value;
             const password = document.getElementById("password").value;
 
-            if(email == "admin@gmail.com" && password=="admin"){
-              const navNew = document.getElementById("navNew");
-              const navAdd = document.getElementById("navAdd");
-              if (navNew) navNew.style.display = "none";
-              if (navAdd) navAdd.style.display = "inline-block";
+            if(email === "admin@gmail.com" && password==="admin"){
               window.location.href = "./admin.html";
             }
             firebase.auth().signInWithEmailAndPassword(email, password)

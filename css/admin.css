@@ -213,5 +213,23 @@
         #addProductForm button:hover {
             background-color: #e76a24;
         }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo img {
+            height: 60px;
+            width: 60px;
+            object-fit: contain;
+        }
+
+        .logo span {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #5c4033;
+            font-family: 'Poppins', sans-serif;
+        }
 
 
