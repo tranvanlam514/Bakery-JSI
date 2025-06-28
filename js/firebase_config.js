@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const email = document.getElementById("email").value;
             const password = document.getElementById("password").value;
 
-            if(email === "admin@gmail.com" && password==="admin"){
+            if(email.toLowerCase()=== "admin@gmail.com" && password==="admin"){
               window.location.href = "./admin.html";
             }
             firebase.auth().signInWithEmailAndPassword(email, password)
@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     const user = userCredential.user;
                     console.log("User signed in:", user);
                     alert("Đăng nhập thành công!");
-                    window.location.href = "./index.html"; // Chuyển đến trang chính
+                    window.location.href = "./index.html"; 
                 })
                 .catch((error) => {
                     const errorMessage = error.message;
@@ -67,42 +67,88 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 });
-logoutBtn.addEventListener("click", function () {
-    firebase.auth().signOut().then(() => {
-      alert("Đăng xuất thành công!");
-      window.location.reload();
-    }).catch((error) => {
-      console.error("Đăng xuất thất bại: ", error);
-    });
+
+document.addEventListener("DOMContentLoaded", () => {
+  const loginBtn = document.getElementById("button_login");
+
+  if (!loginBtn) return;
+
+  loginBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value;
+
+    firebase.auth().signInWithEmailAndPassword(email, password)
+      .then((cred) => {
+        const user = cred.user;                  // user đã đăng nhập
+        const mail = user.email.toLowerCase();   // tránh lệch HOA/thường
+
+        if (mail === "admin@gmail.com") {
+          window.location.href = "./admin.html";
+        } else {
+          window.location.href = "./index.html";
+        }
+      })
+      .catch((err) => {
+        alert("Đăng nhập thất bại:\n" + err.message);
+        console.error(err);
+      });
+  });
 });
+
 document.addEventListener("DOMContentLoaded", () => {
   const loginBtn = document.getElementById("loginBtn");
   const userMenu = document.getElementById("userMenu");
   const userAvatar = document.getElementById("userAvatar");
   const logoutBtn = document.getElementById("logoutBtn");
+  const navNew = document.getElementById("navNew");
+  const navAdd = document.getElementById("navAdd");
 
-  firebase.auth().onAuthStateChanged((user) => {
+  auth.onAuthStateChanged((user) => {
     if (user) {
-      console.log("Đã đăng nhập:", user);
+      console.log("Đã đăng nhập:", user.email);
+
       if (loginBtn) loginBtn.style.display = "none";
       if (userMenu) userMenu.style.display = "flex";
-      if (userAvatar) userAvatar.src = user.photoURL || "https://www.gravatar.com/avatar/?d=mp";
-      
-      if (logoutBtn) {
+      if (logoutBtn) logoutBtn.style.display = "inline-block";
+
+      if (userAvatar) {
+        userAvatar.src = user.photoURL || "images/default-avatar.png";
+      }
+
+      // Phân quyền: Admin
+      if (user.email === "admin@gmail.com") {
+        if (navNew) navNew.style.display = "none";
+        if (navAdd) navAdd.style.display = "inline-block";
+      } else {
+        if (navNew) navNew.style.display = "inline-block";
+        if (navAdd) navAdd.style.display = "none";
+      }
+
+      if (!logoutBtn.hasListener) {
         logoutBtn.addEventListener("click", () => {
-          firebase.auth().signOut().then(() => {
+          auth.signOut().then(() => {
             alert("Đăng xuất thành công!");
             window.location.reload();
           }).catch((error) => {
             console.error("Logout error:", error);
           });
         });
+        logoutBtn.hasListener = true;
       }
+
     } else {
       console.log("Chưa đăng nhập");
+
       if (loginBtn) loginBtn.style.display = "inline-block";
       if (userMenu) userMenu.style.display = "none";
+      if (logoutBtn) logoutBtn.style.display = "none";
+      if (userAvatar) userAvatar.src = "";
+      if (navNew) navNew.style.display = "inline-block";
+      if (navAdd) navAdd.style.display = "none";
     }
   });
 });
+
 

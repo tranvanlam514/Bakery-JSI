@@ -37,7 +37,7 @@ form.addEventListener("submit", async (e) => {
 
 
 // Thay đổi và hiển thị sản phẩm
-onSnapshot(collection(db, "cake"), (snapshot) => {
+onSnapshot(collection(db, "cake"), (snapshot) => { 
   productList.innerHTML = "";
   snapshot.forEach((docSnap) => {
     const data = docSnap.data();
